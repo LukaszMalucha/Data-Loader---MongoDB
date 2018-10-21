@@ -8,5 +8,5 @@ from flask import Flask, render_template, current_app, request, redirect, url_fo
 ##### App Settings
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'BiggestSecret'
+app.config['SECRET_KEY'] = 'asdasdasd'
 Bootstrap(app)
