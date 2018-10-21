@@ -1,5 +1,0 @@
-env.py
-*.sqlite3
-*.pyc
-.~c9
-__pycache__?
