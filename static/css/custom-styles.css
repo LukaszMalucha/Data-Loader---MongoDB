@@ -341,7 +341,9 @@ tr {
     color: black;
 }
 
-
+textarea.materialize-textarea {
+    color: black;
+}
 
 
 /*------------------------------------------------------------------------------
