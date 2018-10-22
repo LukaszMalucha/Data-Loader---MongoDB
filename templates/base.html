@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Digit Recognition</title>
+    <title>MongoDB Loader</title>
     <!-- Material Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Materialize-->
@@ -20,8 +20,7 @@
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <!-- jQuery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 
@@ -35,7 +34,7 @@
         <nav class="navbar navbar-default top-navbar">
             <div class="col-md-5 text-center"></div>
             <div class="col-md-2 text-center">
-                <a class="navbar-brand waves-effect waves-dark" href=""><i class="large material-icons">filter_1</i><strong>Digit Recognition</strong></a>
+                <a class="navbar-brand waves-effect waves-dark" href=""><i class="large material-icons">filter_1</i><strong>MongoDB Loader</strong></a>
             </div>
             <div class="col-md-5 text-center"></div>
         </nav>
@@ -65,8 +64,8 @@
     </div>
     <!-- WRAPPER -->
 
-    <!-- jQuery Js -->
-    <!--<script src="{{url_for('static', filename='js/jquery-1.10.2.js')}}"></script>-->
+    <!-- jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Bootstrap Js -->
     <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
@@ -74,13 +73,14 @@
     <!-- Materialize Js -->
     <script src="{{url_for('static', filename='materialize/js/materialize.min.js')}}"></script>
 
-    <!-- Metis Menu Js -->
-    <script src="{{url_for('static', filename='js/jquery.metisMenu.js')}}"></script>
-
     <!-- Custom Js -->
     <script src="{{url_for('static', filename='js/custom-scripts.js')}}"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.collapsible').collapsible();
+    });
+    </script>
     
-    <script src="{{url_for('static',filename='js/canvas.js') }}"></script>
 
 </body>
 

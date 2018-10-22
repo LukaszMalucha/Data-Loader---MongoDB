@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% block content %}
+<div class="card text-center" id="main_card">
+
+    <div class="row">
+        <div class="col-md-3 text-center"></div>
+        <div class="col-md-6 text-center">
+            <div class="card text-center" id="dashboard_card">
+                <div class="row">
+                    <div class="col-md-2 text-center"></div>
+                    <div class="col-md-8 text-center">
+                        <br>
+                        <h1>Tweets</h1>
+                    </div>
+                    <div class="col-md-2 text-center"></div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <h2> Hashtag & Retweets </h2>
+                        </div>
+                        <div class="col-md-9 text-center">
+                            <h2> Tweet </h2>
+                        </div>
+                    </div>
+                    {% for tweet in tweets %}
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <h5> {{ tweet.hashtag }} {{ tweet.retweets }}</h5>
+                        </div>
+                        <div class="col-md-9 text-center">
+                            <h5> {{ tweet.text }} </h5>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-2 text-center">
+
+                        </div>
+                        <div class="col-md-8 text-center">
+                            <ul class="collapsible">
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+                                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                                </li>
+                                <li>
+                                    <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 text-center"></div>
+
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-2 text-center"></div>
+                        <div class="col-md-8 text-center">
+                            <a id="predict" class="waves-effect waves-light btn-large" style="display: inline-block;">Twitter</a>
+                        </div>
+                        <div class="col-md-2 text-center"></div>
+                    </div>
+                    <div class="row text-center">
+                    </div>
+                    <div class="col-md-3 text-center"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
