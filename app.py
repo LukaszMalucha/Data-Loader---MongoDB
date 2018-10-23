@@ -4,7 +4,7 @@ import env
 from flask_bootstrap import Bootstrap
 from flask import Flask, render_template, current_app, request, redirect, url_for, flash
 from flask_pymongo import PyMongo
-
+from bson.objectid import ObjectId
 
 ##### App Settings
 
@@ -43,8 +43,33 @@ def insert_tweet():
     tweets=mongo.db.tweets
     tweets.insert_one(request.form.to_dict())
     return redirect(url_for('get_tweets'))
-
-
+    
+    
+@app.route('/edit_tweet/<tweet_id>')
+def edit_tweet(tweet_id):
+    the_tweet = mongo.db.tweets.find_one({"_id": ObjectId(tweet_id)})
+    all_hashtags = mongo.db.hashtags.find()
+    return render_template('edit_tweet.html', tweet = the_tweet, hashtags = all_hashtags)
+    
+    
+@app.route('/update_tweet/<tweet_id>', methods=['POST'])
+def update_tweet(tweet_id):
+    tweets = mongo.db.tweets
+    tweets.update( {'_id': ObjectId(tweet_id)},
+                    {
+                    'tweet_hashtag' : request.form.get['hashtag'],
+                    'tweet_retweets' : request.form.get['retweets'],
+                     'tweet_text' : request.form.get['text'],
+                     'tweet_date' : request.form.get['date']
+                    })
+    return redirect(url_for('get_tweets'))   
+    
+    
+@app.route('/delete_tweet/<tweet_id>', methods=['POST'])
+def delete_tweet(tweet_id):   
+    mongo.db.tweets.remove({"_id": ObjectId(tweet_id)})
+    return redirect(url_for('get_tweets')) 
+                    
 
 
 ## APP INITIATION

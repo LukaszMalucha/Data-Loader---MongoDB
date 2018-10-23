@@ -1,0 +1,76 @@
+{% extends 'base.html' %} {% block content %}
+<div class="card text-center" id="main_card">
+
+    <div class="row">
+        <div class="col-md-3 text-center"></div>
+        <div class="col-md-6 text-center">
+            <div class="card text-center" id="dashboard_card">
+                <div class="row">
+                    <div class="col-md-2 text-center"></div>
+                    <div class="col-md-8 text-center">
+                        <br>
+                        <h2>Edit Tweet</h2>
+                    </div>
+                    <div class="col-md-2 text-center"></div>
+                </div>
+                <div class="row">
+
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-2 text-center">
+
+                    </div>
+                    <div class="col-md-8 text-center">
+                        <div class="row">
+                            <form action="{{url_for('insert_tweet')}}" method="POST" class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <select id="hashtag" name="hashtag" required>
+                                            <option value="" disabled selected>Choose Hashtag</option>
+                                            {% for hash in hashtags %}
+                                            {% if hash.hashtag == tweet.hashtag %}
+                                                <option value="{{ hash.hashtag }}" selected >{{ hash.hashtag }}</option>
+                                            {% else %}
+                                                <option value="{{ hash.hashtag }}">{{ hash.hashtag }}</option>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                        <label>Hashtag</label>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <i class="fas fa-retweet"></i>
+                                        <input id="retweets" name="retweets" type="number" class="validate" value="{{tweet.retweets}}" required>
+                                        <label for="textarea1">Retweets</label>
+
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <i class="fab fa-twitter"></i>
+                                        <input id="text" name="text" class="validate" value="{{tweet.text}}" required>
+                                        <label for="textarea1">Tweet</label>
+
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <i class="far fa-calendar"></i>
+                                        <input id="date" name="date" type="text" class="datepicker" value="{{tweet.date}}" required>
+                                        <label for="textarea1">Date</label>
+                                    </div>
+                                </div>
+                                <div class="input-field col s12">
+                                    <button class="btn waves-effect waves-light" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2 text-center"></div>
+
+                </div>
+
+
+                <div class="col-md-3 text-center"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
