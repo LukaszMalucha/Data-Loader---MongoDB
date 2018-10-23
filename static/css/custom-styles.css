@@ -73,7 +73,7 @@ html {
 
 
 #text {
-    color: white;
+    color: black;
 }
 
 .col-md-8,
@@ -345,7 +345,13 @@ textarea.materialize-textarea {
     color: black;
 }
 
+.select-wrapper input.select-dropdown {
+    color: black;
+}
 
+input[type="text"]:not(.browser-default) {
+       color: black; 
+}
 /*------------------------------------------------------------------------------
     MEDIA QUERIES     
 ------------------------------------------------------------------------------*/
