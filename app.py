@@ -65,11 +65,27 @@ def update_tweet(tweet_id):
     return redirect(url_for('get_tweets'))   
     
     
-@app.route('/delete_tweet/<tweet_id>', methods=['POST'])
+@app.route('/delete_tweet/<tweet_id>')
 def delete_tweet(tweet_id):   
     mongo.db.tweets.remove({"_id": ObjectId(tweet_id)})
     return redirect(url_for('get_tweets')) 
                     
+                    
+@app.route('/get_hashtags')
+def get_hashtags():
+    _hashtags = mongo.db.hashtags.find()
+    return render_template('get_hashtags.html', hashtags = _hashtags)
+    
+    
+@app.route('/edit_hashtag/<hashtag_id>')
+def edit_hashtag(hashtag_id):   
+    the_hashtag = mongo.db.hashtags.find_one({"_id": ObjectId(hashtag_id)})
+    return render_template('edit_hashtag.html', hashtag = the_hashtag)        
+    
+@app.route('/delete_hashtag/<hashtag_id>')
+def delete_hashtag(hashtag_id):   
+    mongo.db.hashtags.remove({"_id": ObjectId(hashtag_id)})
+    return redirect(url_for('get_hashtags'))     
 
 
 ## APP INITIATION
