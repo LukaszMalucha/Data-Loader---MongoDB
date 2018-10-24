@@ -9,7 +9,7 @@
                     <div class="col-md-2 text-center"></div>
                     <div class="col-md-8 text-center">
                         <br>
-                        <h2>Edit Tweet</h2>
+                        <h2>Add Hashtag</h2>
                     </div>
                     <div class="col-md-2 text-center"></div>
                 </div>
@@ -22,14 +22,16 @@
                     </div>
                     <div class="col-md-8 text-center">
                         <div class="row">
-                            <form action="{{url_for('update_hashtag', hashtag_id=hashtag._id)}}" method="POST" class="col s12">
+                            <form action="{{url_for('insert_hashtag')}}" method="POST" class="col s12">
                                 <div class="row">
+                                    
                                     <div class="input-field col s12">
                                         <i class="fab fa-twitter"></i>
-                                        <input id="hashtag" name="hashtag" class="validate" value="{{hashtag.hashtag}}" required>
+                                        <input id="hashtag" name="hashtag" class="validate"  required>
                                         <label for="textarea1">Tweet</label>
+
                                     </div>
-  
+                                    
                                 </div>
                                 <div class="input-field col s12">
                                     <button class="btn waves-effect waves-light" type="submit">Submit</button>

@@ -22,16 +22,16 @@
                     </div>
                     <div class="col-md-8 text-center">
                         <div class="row">
-                            <form action="{{url_for('insert_tweet')}}" method="POST" class="col s12">
+                            <form action="{{url_for('update_tweet', tweet_id=tweet._id )}}" method="POST" class="col s12">
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <select id="hashtag" name="hashtag" required>
                                             <option value="" disabled selected>Choose Hashtag</option>
                                             {% for hash in hashtags %}
                                             {% if hash.hashtag == tweet.hashtag %}
-                                                <option value="{{ hash.hashtag }}" selected >{{ hash.hashtag }}</option>
+                                                <option id="hashtag" name="hashtag" value="{{ hash.hashtag }}" selected >{{ hash.hashtag }}</option>
                                             {% else %}
-                                                <option value="{{ hash.hashtag }}">{{ hash.hashtag }}</option>
+                                                <option id="hashtag" name="hashtag" value="{{ hash.hashtag }}">{{ hash.hashtag }}</option>
                                             {% endif %}
                                             {% endfor %}
                                         </select>

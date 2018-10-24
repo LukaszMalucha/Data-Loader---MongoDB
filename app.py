@@ -57,10 +57,10 @@ def update_tweet(tweet_id):
     tweets = mongo.db.tweets
     tweets.update( {'_id': ObjectId(tweet_id)},
                     {
-                    'tweet_hashtag' : request.form.get['hashtag'],
-                    'tweet_retweets' : request.form.get['retweets'],
-                     'tweet_text' : request.form.get['text'],
-                     'tweet_date' : request.form.get['date']
+                    'hashtag' : request.form.get('hashtag'),
+                    'retweets' : request.form.get('retweets'),
+                    'text' : request.form.get('text'),
+                    'date' : request.form.get('date')
                     })
     return redirect(url_for('get_tweets'))   
     
@@ -76,16 +76,43 @@ def get_hashtags():
     _hashtags = mongo.db.hashtags.find()
     return render_template('get_hashtags.html', hashtags = _hashtags)
     
-    
+
+@app.route('/add_hashtags')
+def add_hashtags():
+    _hashtags = mongo.db.hashtags.find()
+    hashtag_list = [hashtag for hashtag in _hashtags]
+    return render_template("add_hashtags.html", hashtags= hashtag_list)
+
+
+@app.route('/insert_hashtag', methods=['POST'])
+def insert_hashtag():
+    hashtags=mongo.db.hashtags
+    hashtags.insert_one(request.form.to_dict())
+    return redirect(url_for('get_hashtags'))  
+
 @app.route('/edit_hashtag/<hashtag_id>')
 def edit_hashtag(hashtag_id):   
     the_hashtag = mongo.db.hashtags.find_one({"_id": ObjectId(hashtag_id)})
-    return render_template('edit_hashtag.html', hashtag = the_hashtag)        
+    return render_template('edit_hashtag.html', hashtag = the_hashtag) 
+  
+    
+@app.route('/update_hashtag/<hashtag_id>', methods=['POST'])
+def update_hashtag(hashtag_id):
+    hashtags = mongo.db.hashtags
+    hashtags.update( {'_id': ObjectId(hashtag_id)},
+                    {
+                    'hashtag' : request.form.get('hashtag')
+                    })
+    return redirect(url_for('get_hashtags'))   
+    
     
 @app.route('/delete_hashtag/<hashtag_id>')
 def delete_hashtag(hashtag_id):   
     mongo.db.hashtags.remove({"_id": ObjectId(hashtag_id)})
     return redirect(url_for('get_hashtags'))     
+    
+    
+    
 
 
 ## APP INITIATION
